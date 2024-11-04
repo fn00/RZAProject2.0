@@ -1,0 +1,15 @@
+﻿@page "/login"
+@using RZAProject2.Models
+
+@inject RZAProject2.Services.CustomerService CustomerService
+@inject NavigationManager NavigationManager
+
+@rendermode InteractiveServer
+
+<h3> Log In</h3>
+
+<EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FormName="LoginForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+</EditForm>

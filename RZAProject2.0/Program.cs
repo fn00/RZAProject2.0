@@ -1,4 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using RZAProject2._0.Components;
+using RZAProject2.Models;
+using RZAProject2.Services;
 
 namespace RZAProject2._0
 {
@@ -11,6 +14,12 @@ namespace RZAProject2._0
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+
+            builder.Services.AddDbContext<TlS2302452RzaContext>(options =>
+            options.UseMySql(builder.Configuration.GetConnectionString("MySqlConnection"),
+            new MySqlServerVersion(new Version(8, 0, 29))));
+
+            builder.Services.AddScoped<CustomerService>();
 
             var app = builder.Build();
 

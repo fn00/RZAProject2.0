@@ -1,0 +1,126 @@
+﻿body {
+    height: 100vh;
+    width: 100%;
+    background-image: url('/images/lion background image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 75px;
+}
+
+    .navbar ul {
+        list-style: none;
+        gap: 25px;
+        display: flex;
+    }
+
+
+li {
+    float: left;
+    display: inline;
+    border-right: 1px solid #bbb;
+    margin-right: 150px;
+    border-left: 1px solid #bbb;
+}
+
+    li:last-child {
+        border-right: none;
+    }
+
+    li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+        li a:hover {
+            background-color: whitesmoke;
+            color: #ffc000;
+        }
+
+
+.home-content {
+    position: absolute;
+    top: 75%;
+    left: 5%;
+    transform: translateY(-50px);
+}
+
+    .home-content h2 {
+        background-color: #A9D18E;
+        border-radius: 20px;
+        padding: 20px 20px 20px 20px;
+        margin: 20px 0px 0px;
+        font-size: 45px;
+    }
+
+.register {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35%; /* Adjust width for better proportions */
+    background-color: rgba(51, 63, 80, 0.85); /* Semi-transparent for sleek effect */
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    color: white;
+    font-size: 18px;
+    margin: 120px;
+}
+
+input[type="text"], input[type="password"], input[type="tel"] {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Soft inset effect */
+}
+
+/* Register and Login Button Containers */
+.registerButton, .loginButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Optional: Adds spacing between buttons and other elements */
+}
+
+/* Button Styling */
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #333F50; /* Same green for consistency */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+    /* Hover Effect */
+    button:hover {
+        background-color: #333F50; /* Darker green on hover */
+        color: white;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly deeper shadow on hover */
+        transform: scale(1.05); /* Scale up slightly for a subtle pop effect */
+    }
+
+    /* Optional: Button Focus (Accessibility) */
+    button:focus {
+        outline: none;
+        box-shadow: 0 0 10px #A9D18E; /* Glow effect on focus */
+    }

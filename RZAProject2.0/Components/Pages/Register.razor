@@ -1,0 +1,65 @@
+﻿@using RZAProject2.Models
+@using RZAProject2.Services
+@page "/account"
+@rendermode InteractiveServer
+@inject CustomerService CustomerService
+@inject NavigationManager nav
+
+<link rel="stylesheet" href="CSS/style.css" />
+
+
+<div class="register">
+
+    <h3 style="text-align: center"> Register</h3><br>
+    <label> Username </label>
+    <input type="text" id="username" name="username" @bind-value=newCustomer.Username><br>
+
+
+    <label> Password </label>
+    <input type="password" id="password" name="password" @bind-value=newCustomer.Password><br>
+
+    <label> First Name </label>
+    <input type="text" id="firstName" name="firstName" @bind-value=newCustomer.FirstName><br>
+
+
+    <label> Last Name </label>
+    <input type="text" id="lastName" name="lastName" @bind-value=newCustomer.LastName><br>
+
+    <label>Phone Number </label>
+    <input type="text" id="phoneNumber" name="phoneNumber" @bind-value=newCustomer.PhoneNumber>
+
+    <div class="registerButton">
+        <button @onclick=RegisterCustomer>Register</button><br><br>
+    </div>
+
+
+
+    <h3 style="text-align: center"> Login</h3><br>
+    <label> Username</label>
+    <input type="text" id="username" name="username" @bind-value=newCustomer.Username><br>
+    <label> Password</label><input type="password" id="password" name="password" @bind-value=newCustomer.Password><br>
+
+    <div class="loginButton">
+        <button>Login</button>
+    </div>
+
+    @code {
+        private async Task RegisterCustomer()
+        {
+            await CustomerService.AddCustomerAsync(newCustomer);
+            nav.NavigateTo("/");
+        }
+    }
+
+</div>
+
+
+@code {
+    private Customer newCustomer = new Customer();
+
+    private async Task testButton()
+    {
+        await CustomerService.AddCustomerAsync(newCustomer);
+    }
+
+}
