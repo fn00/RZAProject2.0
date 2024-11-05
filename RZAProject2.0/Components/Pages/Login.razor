@@ -1,6 +1,12 @@
 ﻿@page "/login"
 
 @using RZAProject2.Models
+@using RZAProject2.Utilities
+@using RZAProject2.Services
+@inject CustomerService CustomerService
+@inject NavigationManager NavigationManager
+@inject UserSession UserSession
+
 
 @inject RZAProject2.Services.CustomerService CustomerService
 
@@ -17,13 +23,12 @@
         <label> Username</label>
         <input type="text" id="username" name="username" @bind-value=newCustomer.Username><br>
 
-
-
         <label> Password</label>
         <input type="password" id="password" name="password" @bind-value=newCustomer.Password><br>
-    </div>
+
         <div class="loginButton">
             <button type="submit">Submit</button>
+        </div>
     </div>
 </EditForm>
 
@@ -52,7 +57,7 @@
         else
 
         {
-
+            UserSession.UserId = newCustomer.CustomerId;
             NavigationManager.NavigateTo("/account");
 
         }

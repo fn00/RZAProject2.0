@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RZAProject2.0", "RZAProject2.0\RZAProject2.0.csproj", "{6F9F95D4-6303-4CB3-9CF4-D3B7F14B7D76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RZAProject2UnitTest", "RZAProject2UnitTest\RZAProject2UnitTest.csproj", "{8F6ABB70-E582-40AC-BB75-5BF5AE30AB79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RZAProject2UnitTest", "RZAProject2UnitTest\RZAProject2UnitTest.csproj", "{8F6ABB70-E582-40AC-BB75-5BF5AE30AB79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

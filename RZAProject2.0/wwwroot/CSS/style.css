@@ -95,6 +95,7 @@ input[type="text"], input[type="password"], input[type="tel"] {
     margin-bottom: 20px; /* Optional: Adds spacing between buttons and other elements */
 }
 
+
 /* Button Styling for Register login and register page */
 button {
     padding: 15px 30px;
@@ -121,3 +122,19 @@ button {
         outline: none;
         box-shadow: 0 0 10px #A9D18E; /* Glow effect on focus */
     }
+
+
+.infobox-ctn {
+    position: absolute;
+    bottom: 150%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35%; /* Adjust width for better proportions */
+    background-color: rgba(51, 63, 80, 0.85); /* Semi-transparent for sleek effect */
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    color: white;
+    font-size: 18px;
+    margin: 120px;
+}
