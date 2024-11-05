@@ -1,13 +1,13 @@
 * {
     margin: 0px;
     padding: 0px;
-    box-sizing: border-box;
+ 
 }
 
 .navbar {
     width: 100%;
     background-color: #A9D18E;
-    color: white;
+    color: black;
     padding: 15px 75px;
     display: flex;
     justify-content: space-between;
@@ -21,21 +21,39 @@
     gap: 100px;
 }
 
-.navbar ul li a{
-    text-decoration: none;
-    font-size: 20px;
-    color: white;
-}
+    .navbar ul li a {
+        text-decoration: none;
+        font-size: 20px;
+        color: black;
+    }
+
+    .navbar ul li a:hover {
+        color: black;
+        opacity: 0.4;
+    }
 
 .navbar-right {
     display: flex;
     justify-content: center;
     text-decoration: none;
-    color: white;
+    color: black;
 }
 .icon-1 {
     padding: 10px 20px;
     font-size: 30px;
     text-decoration: none;
-    color: white;
+}
+
+.icon-1 {
+    padding: 10px 20px;
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+}
+.icon-1 a:hover {
+    color: black;
+    opacity: 0.4;
+}
+.btn-1 {
+    color: black;
 }

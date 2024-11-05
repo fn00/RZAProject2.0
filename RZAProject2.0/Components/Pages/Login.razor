@@ -1,15 +1,63 @@
 ﻿@page "/login"
+
 @using RZAProject2.Models
 
 @inject RZAProject2.Services.CustomerService CustomerService
+
 @inject NavigationManager NavigationManager
 
 @rendermode InteractiveServer
+<link rel="stylesheet" href="CSS/style.css" />
 
-<h3> Log In</h3>
-
-<EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FormName="LoginForm">
+<EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FromName="LoginForm">
     <DataAnnotationsValidator />
     <ValidationSummary />
+    <div class="register">
+        <h3 style="text-align: center"> Login</h3><br>
+        <label> Username</label>
+        <input type="text" id="username" name="username" @bind-value=newCustomer.Username><br>
 
+
+
+        <label> Password</label>
+        <input type="password" id="password" name="password" @bind-value=newCustomer.Password><br>
+    </div>
+        <div class="loginButton">
+            <button type="submit">Submit</button>
+    </div>
 </EditForm>
+
+@code {
+
+    private Customer newCustomer = new Customer();
+
+    private string password;
+
+    private async Task HandleValidSubmit()
+
+    {
+
+        newCustomer.Password = password;
+
+        newCustomer = await CustomerService.LogIn(newCustomer);
+
+        if (newCustomer == null)
+
+        {
+
+            Console.WriteLine("Could not Login");
+
+        }
+
+        else
+
+        {
+
+            NavigationManager.NavigateTo("/account");
+
+        }
+
+    }
+
+}
+

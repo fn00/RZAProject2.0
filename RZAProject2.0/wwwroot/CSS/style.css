@@ -38,17 +38,14 @@ li {
 
     li a {
         display: block;
-        color: black;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
     }
 
-        li a:hover {
-            background-color: whitesmoke;
-            color: #ffc000;
+        li a:hover { /*Hover effect for navbar*/
+            color: forestgreen;
         }
-
 
 .home-content {
     position: absolute;
@@ -98,7 +95,7 @@ input[type="text"], input[type="password"], input[type="tel"] {
     margin-bottom: 20px; /* Optional: Adds spacing between buttons and other elements */
 }
 
-/* Button Styling */
+/* Button Styling for Register login and register page */
 button {
     padding: 15px 30px;
     font-size: 20px;
