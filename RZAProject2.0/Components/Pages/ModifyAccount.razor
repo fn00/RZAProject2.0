@@ -7,23 +7,34 @@
 
 @page "/modify"
 
-<h3>ModifyAccount</h3>
+<h3 style="text-align: center"> Modify Account</h3>
+<br>
 
-<p>new password</p>
-<input @bind-value=@newPassword />
-<p>old password</p>
-<input @bind-value=@oldPassword />
-<p>confirm old password</p>
-<input @bind-value=@oldPasswordConfirm />
-<button onclick=@ChangePassword>Change Password</button>
+
+<div class="register">
+    <label>Old password</label>
+    <input type="text" id="oldPassword" name="oldPassword" @bind-value=@oldPassword><br>
+
+    <label>New password</label>
+    <input type="text" id="newPassword" name="newPassword" @bind-value=@newPassword><br>
+
+    <label>Confirm New Password</label>
+    <input type="text" id="ConfirmNewPassword" name="ConfirmNewPassword" @bind-value=@newPassword><br>
+
+
+    <div class="registerButton">
+        <button onclick=@ChangePassword>Change Password</button>
+    </div>
+</div>
+
 
 @code {
     private string newPassword;
     private string oldPassword;
-    private string oldPasswordConfirm;
+    private string newPasswordConfirm;
     private async Task ChangePassword()
     {
-        if (oldPassword == oldPasswordConfirm)
+        if (oldPassword == newPasswordConfirm)
         {
             string hashedNewPassword = PasswordUtils.HashPassword(newPassword);
             string hashedOldPassword = PasswordUtils.HashPassword(oldPassword);

@@ -1,7 +1,8 @@
 ﻿using System.Text;
 using System.Security.Cryptography;
 
-namespace RZA_sly.Utilities
+
+namespace RZAProject2.Utilities
 {
     #region hidden
     public static class PasswordUtils

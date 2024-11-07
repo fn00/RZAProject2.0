@@ -1,6 +1,9 @@
-﻿@using RZAProject2.Models
+﻿@* Page dedicated to register system, contains functionality *@
+
+
+@using RZAProject2.Models
 @using RZAProject2.Services
-@page "/account"
+@page "/register"
 @rendermode InteractiveServer
 @inject CustomerService CustomerService
 @inject NavigationManager nav
@@ -29,19 +32,10 @@
     <input type="text" id="phoneNumber" name="phoneNumber" @bind-value=newCustomer.PhoneNumber>
 
     <div class="registerButton">
-        <button @onclick=RegisterCustomer>Register</button><br><br>
+        <button @onclick=RegisterCustomer>Submit</button><br><br>
     </div>
 
-        
 
-    @* <h3 style="text-align: center"> Login</h3><br>
-    <label> Username</label>
-    <input type="text" id="username" name="username" @bind-value=newCustomer.Username><br>
-    <label> Password</label><input type="password" id="password" name="password" @bind-value=newCustomer.Password><br>
-
-    <div class="loginButton">
-        <button>Login</button>
-    </div> *@
 
     @code {
         private async Task RegisterCustomer()

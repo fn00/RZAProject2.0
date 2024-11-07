@@ -1,5 +1,6 @@
-﻿@page "/login"
+﻿@* Page dedicated to login system, does not yet contain functionality *@
 
+@page "/account"
 @using RZAProject2.Models
 @using RZAProject2.Utilities
 @using RZAProject2.Services
@@ -13,6 +14,8 @@
 @inject NavigationManager NavigationManager
 
 @rendermode InteractiveServer
+
+
 <link rel="stylesheet" href="CSS/style.css" />
 
 <EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FromName="LoginForm">
@@ -29,40 +32,42 @@
         <div class="loginButton">
             <button type="submit">Submit</button>
         </div>
+        <div class="loginButton">
+            <p>Dont Have An Account? <a href="/register">Sign Up Now</a></p>
+        </div>
+
+        <div class="loginButton">
+            <p><a href="/Modify">Forget password?</a></p>
+        </div>
     </div>
 </EditForm>
 
 @code {
-
     private Customer newCustomer = new Customer();
-
     private string password;
 
-    private async Task HandleValidSubmit()
-
+    #region Hidden
+    protected override async Task OnInitializedAsync()
     {
-
-        newCustomer.Password = password;
-
-        newCustomer = await CustomerService.LogIn(newCustomer);
-
-        if (newCustomer == null)
-
+        if (UserSession.UserId != 0)
         {
-
-            Console.WriteLine("Could not Login");
-
+            NavigationManager.NavigateTo("/account");
         }
+    }
+    #endregion
 
+    private async Task HandleValidSubmit()
+    {
+        newCustomer.Password = PasswordUtils.HashPassword(password);
+        newCustomer = await CustomerService.LogIn(newCustomer);
+        if (newCustomer == null)
+        {
+            Console.WriteLine("could not log in");
+        }
         else
-
         {
             UserSession.UserId = newCustomer.CustomerId;
             NavigationManager.NavigateTo("/account");
-
         }
-
     }
-
 }
-

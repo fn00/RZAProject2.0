@@ -9,21 +9,6 @@
 
 }
 
-.navbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 75px;
-}
-
-    .navbar ul {
-        list-style: none;
-        gap: 25px;
-        display: flex;
-    }
-
-
 li {
     float: left;
     display: inline;
