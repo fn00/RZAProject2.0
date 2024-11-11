@@ -9,29 +9,6 @@
 
 }
 
-li {
-    float: left;
-    display: inline;
-    border-right: 1px solid #bbb;
-    margin-right: 150px;
-    border-left: 1px solid #bbb;
-}
-
-    li:last-child {
-        border-right: none;
-    }
-
-    li a {
-        display: block;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-
-        li a:hover { /*Hover effect for navbar*/
-            color: forestgreen;
-        }
-
 .home-content {
     position: absolute;
     top: 75%;
@@ -52,11 +29,11 @@ li {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 35%; /* Adjust width for better proportions */
-    background-color: rgba(51, 63, 80, 0.85); /* Semi-transparent for sleek effect */
+    width: 35%;
+    background-color: rgba(51, 63, 80, 0.85); /* Semi-transparent */
     border-radius: 20px;
     padding: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Shadow for depth */
     color: white;
     font-size: 18px;
     margin: 120px;
@@ -77,7 +54,7 @@ input[type="text"], input[type="password"], input[type="tel"] {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    margin-bottom: 20px; /* Optional: Adds spacing between buttons and other elements */
+    margin-bottom: 20px; /* Adds spacing between buttons and other elements */
 }
 
 
@@ -109,17 +86,17 @@ button {
     }
 
 
-.infobox-ctn {
+/*.infobox-ctn {
     position: absolute;
     bottom: 150%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 35%; /* Adjust width for better proportions */
-    background-color: rgba(51, 63, 80, 0.85); /* Semi-transparent for sleek effect */
+    width: 35%;
+    background-color: rgba(51, 63, 80, 0.85);  Semi-transparent 
     border-radius: 20px;
     padding: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);  Shadow for depth 
     color: white;
     font-size: 18px;
     margin: 120px;
-}
+}*/
