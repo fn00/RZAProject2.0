@@ -13,35 +13,39 @@
 
 <link rel="stylesheet" href="CSS/style.css" />
 
-
-<div class="register">
-    <EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FormName="testForm">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-        <h3 style="text-align: center"> Register</h3><br>
-        <label> Username </label>
-        <input type="text" id="username" name="username" @bind-value=newCustomer.Username><br>
-
-
-        <label> Password </label>
-        <input type="password" id="password" name="password" @bind-value=newCustomer.Password><br>
-
-        <label> First Name </label>
-        <input type="text" id="firstName" name="firstName" @bind-value=newCustomer.FirstName><br>
+<div class="register-container">
+    <div class="register-card">
+        <div class="register">
+            <EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FormName="testForm">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <h3 style="text-align: center"> Register</h3><br>
+                <label> Username </label>
+                <input type="text" id="username" name="username" @bind-value=newCustomer.Username><br>
 
 
-        <label> Last Name </label>
-        <input type="text" id="lastName" name="lastName" @bind-value=newCustomer.LastName><br>
+                <label> Password </label>
+                <input type="password" id="password" name="password" @bind-value=newCustomer.Password><br>
 
-        <label>Phone Number </label>
-        <input type="text" id="phoneNumber" name="phoneNumber" @bind-value=newCustomer.PhoneNumber>
+                <label> First Name </label>
+                <input type="text" id="firstName" name="firstName" @bind-value=newCustomer.FirstName><br>
 
-        <div class="registerButton">
-            <button type="submit">Submit</button><br><br>
+
+                <label> Last Name </label>
+                <input type="text" id="lastName" name="lastName" @bind-value=newCustomer.LastName><br>
+
+                <label>Phone Number </label>
+                <input type="text" id="phoneNumber" name="phoneNumber" @bind-value=newCustomer.PhoneNumber>
+
+                <div class="registerButton">
+                    <button type="submit">Submit</button><br><br>
+                </div>
+            </EditForm>
         </div>
-    </EditForm>
-</div>
 
+    </div>
+    
+</div>
 
 @code {
     private Customer newCustomer = new Customer();

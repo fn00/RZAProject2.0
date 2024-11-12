@@ -8,24 +8,29 @@
 @page "/modify"
 <link rel="stylesheet" href="CSS/style.css" />
 
+<div class="register-container">
+    <div class="register-card">
+        <div class="register">
+            <div class="register">
 
-<div class="register">
+            <h3 style="text-align: center"> Modify Account</h3>
+            <br>
 
-    <h3 style="text-align: center"> Modify Account</h3>
-    <br>
+            <label>Old password</label>
+            <input type="text" id="oldPassword" name="oldPassword" @bind-value=@oldPassword><br>
 
-    <label>Old password</label>
-    <input type="text" id="oldPassword" name="oldPassword" @bind-value=@oldPassword><br>
+            <label>New password</label>
+            <input type="text" id="newPassword" name="newPassword" @bind-value=@newPassword><br>
 
-    <label>New password</label>
-    <input type="text" id="newPassword" name="newPassword" @bind-value=@newPassword><br>
-
-    <label>Confirm New Password</label>
-    <input type="text" id="ConfirmNewPassword" name="ConfirmNewPassword" @bind-value=@newPassword><br>
+            <label>Confirm New Password</label>
+            <input type="text" id="ConfirmNewPassword" name="ConfirmNewPassword" @bind-value=@newPassword><br>
 
 
-    <div class="registerButton">
-        <button onclick=@ChangePassword>Change Password</button>
+            <div class="registerButton">
+                <button onclick=@ChangePassword>Change Password</button>
+            </div>
+        </div>
+        </div>
     </div>
 </div>
 

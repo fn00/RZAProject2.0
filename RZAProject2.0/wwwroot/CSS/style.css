@@ -41,11 +41,17 @@
         color: white
     }
 
-.register {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    margin-top: 50px;
+}
+
+.register-card {
+    height: auto;
+    background-color: rgba(51, 63, 80, 0.85); /* Semi-transparent */
     width: 35%;
     background-color: rgba(51, 63, 80, 0.85); /* Semi-transparent */
     border-radius: 20px;
@@ -55,6 +61,13 @@
     font-size: 18px;
     margin: 120px;
 }
+
+.register {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
 
 input[type="text"], input[type="password"], input[type="tel"] {
     width: 100%;

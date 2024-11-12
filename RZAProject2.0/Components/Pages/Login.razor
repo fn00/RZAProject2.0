@@ -13,29 +13,34 @@
 
 <link rel="stylesheet" href="CSS/style.css" />
 
-<EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FromName="LoginForm">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <div class="register">
-        <h3 style="text-align: center"> Login</h3><br>
-        <label> Username</label>
-        <input type="text" id="username" name="username" @bind-value=newCustomer.Username required><br>
 
-        <label> Password</label>
-        <input type="password" id="password" name="password" @bind-value=@password required><br>
+<div class="register-container">
+    <div class="register-card">
+        <div class="register">
+            <EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FromName="LoginForm">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <h3 style="text-align: center"> Login</h3><br>
+                <label> Username</label>
+                <input type="text" id="username" name="username" @bind-value=newCustomer.Username required><br>
 
-        <div class="loginButton">
-            <button type="submit">Submit</button>
-        </div>
-        <div class="loginButton">
-            <p>Don't Have An Account? <a href="/register">Sign Up Now</a></p>
-        </div>
+                <label> Password</label>
+                <input type="password" id="password" name="password" @bind-value=@password required><br>
 
-        <div class="loginButton">
-            <p><a href="/Modify">Reset Password?</a></p>
+                <div class="loginButton">
+                    <button type="submit">Submit</button>
+                </div>
+                <div class="loginButton">
+                    <p>Don't Have An Account? <a href="/register">Sign Up Now</a></p>
+                </div>
+
+                <div class="loginButton">
+                    <p><a href="/Modify">Reset Password?</a></p>
+                </div>
+            </EditForm>
         </div>
     </div>
-</EditForm>
+</div>
 
 @code {
     private Customer newCustomer = new Customer();
