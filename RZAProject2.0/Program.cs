@@ -21,7 +21,6 @@ namespace RZAProject2._0
 
             builder.Services.AddScoped<CustomerService>();
 
-
             builder.Services.AddSingleton<UserSession>();
 
             var app = builder.Build();
