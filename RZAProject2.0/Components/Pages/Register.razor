@@ -3,57 +3,60 @@
 
 @using RZAProject2.Models
 @using RZAProject2.Services
+@using RZAProject2.Utilities
 @page "/register"
 @rendermode InteractiveServer
 @inject CustomerService CustomerService
-@inject NavigationManager nav
+@inject NavigationManager NavigationManager
+@inject UserSession UserSession
+
 
 <link rel="stylesheet" href="CSS/style.css" />
 
 
 <div class="register">
-
-    <h3 style="text-align: center"> Register</h3><br>
-    <label> Username </label>
-    <input type="text" id="username" name="username" @bind-value=newCustomer.Username><br>
-
-
-    <label> Password </label>
-    <input type="password" id="password" name="password" @bind-value=newCustomer.Password><br>
-
-    <label> First Name </label>
-    <input type="text" id="firstName" name="firstName" @bind-value=newCustomer.FirstName><br>
+    <EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FormName="testForm">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <h3 style="text-align: center"> Register</h3><br>
+        <label> Username </label>
+        <input type="text" id="username" name="username" @bind-value=newCustomer.Username><br>
 
 
-    <label> Last Name </label>
-    <input type="text" id="lastName" name="lastName" @bind-value=newCustomer.LastName><br>
+        <label> Password </label>
+        <input type="password" id="password" name="password" @bind-value=newCustomer.Password><br>
 
-    <label>Phone Number </label>
-    <input type="text" id="phoneNumber" name="phoneNumber" @bind-value=newCustomer.PhoneNumber>
-
-    <div class="registerButton">
-        <button @onclick=RegisterCustomer>Submit</button><br><br>
-    </div>
+        <label> First Name </label>
+        <input type="text" id="firstName" name="firstName" @bind-value=newCustomer.FirstName><br>
 
 
+        <label> Last Name </label>
+        <input type="text" id="lastName" name="lastName" @bind-value=newCustomer.LastName><br>
 
-    @code {
-        private async Task RegisterCustomer()
-        {
-            await CustomerService.AddCustomerAsync(newCustomer);
-            nav.NavigateTo("/");
-        }
-    }
+        <label>Phone Number </label>
+        <input type="text" id="phoneNumber" name="phoneNumber" @bind-value=newCustomer.PhoneNumber>
 
+        <div class="registerButton">
+            <button type="submit">Submit</button><br><br>
+        </div>
+    </EditForm>
 </div>
 
 
 @code {
     private Customer newCustomer = new Customer();
+    private string password;
+    private string message;
 
-    private async Task testButton()
+    private async Task HandleValidSubmit()
     {
-        await CustomerService.AddCustomerAsync(newCustomer);
-    }
+        // Hash the password using SHA256
+        newCustomer.Password = PasswordUtils.HashPassword(newCustomer.Password);
 
+        // Insert the user into the database
+        await CustomerService.AddCustomerAsync(newCustomer);
+        newCustomer = new Customer();
+        password = "";
+        NavigationManager.NavigateTo("");
+    }
 }
