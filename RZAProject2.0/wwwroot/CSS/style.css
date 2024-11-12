@@ -24,6 +24,22 @@
         font-size: 45px;
     }
 
+/* Used for Educational Content page */
+.educational-content {
+    position: absolute;
+    top: 20%;
+    left: 37.5%;
+    transform: translateY(-50px);
+}
+
+    .educational-content h2 {
+        background-color: rgba(51, 63, 80);
+        border-radius: 20px;
+        padding: 20px 20px 20px 20px;
+        margin: 20px 0px 0px;
+        font-size: 45px;
+        color: white
+    }
 
 .register {
     position: absolute;
