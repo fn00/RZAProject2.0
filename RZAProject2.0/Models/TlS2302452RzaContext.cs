@@ -28,8 +28,8 @@ public partial class TlS2302452RzaContext : DbContext
 
     public virtual DbSet<Ticketbooking> Ticketbookings { get; set; }
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //    => optionsBuilder.UseMySql("name=MySqlConnection", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.29-mysql"));
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder.UseMySql("name=MySqlConnection", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.29-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -45,10 +45,15 @@ public partial class TlS2302452RzaContext : DbContext
 
             entity.HasIndex(e => e.AttractionName, "attractionName_UNIQUE").IsUnique();
 
+            entity.HasIndex(e => e.Attractioncol, "attractioncol_UNIQUE").IsUnique();
+
             entity.Property(e => e.AttractionId).HasColumnName("attractionID");
             entity.Property(e => e.AttractionName)
                 .HasMaxLength(45)
                 .HasColumnName("attractionName");
+            entity.Property(e => e.Attractioncol)
+                .HasMaxLength(45)
+                .HasColumnName("attractioncol");
         });
 
         modelBuilder.Entity<Customer>(entity =>
@@ -152,8 +157,15 @@ public partial class TlS2302452RzaContext : DbContext
 
             entity.HasIndex(e => e.TicketId, "ticketID_idx");
 
-            entity.Property(e => e.CustomerId).HasColumnName("customerID");
+            entity.Property(e => e.CustomerId)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("customerID");
             entity.Property(e => e.TicketId).HasColumnName("ticketID");
+
+            entity.HasOne(d => d.Customer).WithOne(p => p.Ticketbooking)
+                .HasForeignKey<Ticketbooking>(d => d.CustomerId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("customerID");
 
             entity.HasOne(d => d.Ticket).WithMany(p => p.Ticketbookings)
                 .HasForeignKey(d => d.TicketId)

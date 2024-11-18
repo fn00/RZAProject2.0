@@ -9,5 +9,9 @@ public partial class Attraction
 
     public string AttractionName { get; set; } = null!;
 
+    public float? Price { get; set; }
+
+    public string? Attractioncol { get; set; }
+
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 }

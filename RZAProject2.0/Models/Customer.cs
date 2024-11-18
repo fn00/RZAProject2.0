@@ -24,4 +24,6 @@ public partial class Customer
     public DateOnly? DateOfBirth { get; set; }
 
     public int? LoyaltyPoints { get; set; }
+
+    public virtual Ticketbooking? Ticketbooking { get; set; }
 }

@@ -20,7 +20,7 @@ namespace RZAProject2._0
             new MySqlServerVersion(new Version(8, 0, 29))));
 
             builder.Services.AddScoped<CustomerService>();
-
+            builder.Services.AddScoped<AttractionService>();
             builder.Services.AddSingleton<UserSession>();
 
             var app = builder.Build();
