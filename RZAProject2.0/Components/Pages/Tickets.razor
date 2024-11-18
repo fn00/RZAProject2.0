@@ -1,0 +1,33 @@
+﻿@using RZAProject2.Models
+@using RZAProject2.Services
+@inject AttractionService AttractionService
+
+@page "/tickets"
+<link rel="stylesheet" href="CSS/style.css" />
+
+@if (attractions != null)
+{
+    @foreach (Attraction attraction in attractions)
+    {
+        <div>
+            @attraction.AttractionName: £@attraction.Price
+            <button @onclick="@(e => AddTicket(attraction.AttractionId))">Add to Basket</button>
+        </div>
+    }
+    <button>Book Tickets</button>
+}
+else
+{
+    <div>no attractions</div>
+}
+
+
+@code {
+    List<Attraction> attractions;
+    List<Ticket> tickets;
+    protected override async Task OnInitializedAsync()
+    {
+        attractions = await AttractionService.GetAttractionsAsync();
+        tickets = new List<Ticket>();
+    }
+}
