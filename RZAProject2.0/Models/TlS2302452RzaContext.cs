@@ -137,40 +137,42 @@ public partial class TlS2302452RzaContext : DbContext
 
             entity.ToTable("ticket");
 
-            entity.HasIndex(e => e.AttractionId, "attractionID_idx");
+            entity.HasIndex(e => e.AttractionId, "ticket_fk1_idx");
 
-            entity.Property(e => e.TicketId).HasColumnName("ticketID");
-            entity.Property(e => e.AttractionId).HasColumnName("attractionID");
-            entity.Property(e => e.Date).HasColumnName("date");
+            entity.HasIndex(e => e.TicketbookingId, "ticket_fk2_idx");
+
+            entity.Property(e => e.TicketId).HasColumnName("ticketId");
+            entity.Property(e => e.AttractionId).HasColumnName("attractionId");
+            entity.Property(e => e.TicketbookingId).HasColumnName("ticketbookingId");
 
             entity.HasOne(d => d.Attraction).WithMany(p => p.Tickets)
                 .HasForeignKey(d => d.AttractionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("attractionID");
+                .HasConstraintName("ticket_fk1");
+
+            entity.HasOne(d => d.Ticketbooking).WithMany(p => p.Tickets)
+                .HasForeignKey(d => d.TicketbookingId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("ticket_fk2");
         });
 
         modelBuilder.Entity<Ticketbooking>(entity =>
         {
-            entity.HasKey(e => e.CustomerId).HasName("PRIMARY");
+            entity.HasKey(e => e.TicketbookingId).HasName("PRIMARY");
 
             entity.ToTable("ticketbooking");
 
-            entity.HasIndex(e => e.TicketId, "ticketID_idx");
+            entity.HasIndex(e => e.CustomerId, "ticketbooking_fk1_idx");
 
-            entity.Property(e => e.CustomerId)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("customerID");
-            entity.Property(e => e.TicketId).HasColumnName("ticketID");
+            entity.Property(e => e.TicketbookingId).HasColumnName("ticketbookingId");
+            entity.Property(e => e.CustomerId).HasColumnName("customerId");
+            entity.Property(e => e.Date).HasColumnName("date");
+            entity.Property(e => e.DateBooked).HasColumnName("dateBooked");
 
-            entity.HasOne(d => d.Customer).WithOne(p => p.Ticketbooking)
-                .HasForeignKey<Ticketbooking>(d => d.CustomerId)
+            entity.HasOne(d => d.Customer).WithMany(p => p.Ticketbookings)
+                .HasForeignKey(d => d.CustomerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("customerID");
-
-            entity.HasOne(d => d.Ticket).WithMany(p => p.Ticketbookings)
-                .HasForeignKey(d => d.TicketId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("ticketID");
+                .HasConstraintName("ticketbooking_fk1");
         });
 
         OnModelCreatingPartial(modelBuilder);

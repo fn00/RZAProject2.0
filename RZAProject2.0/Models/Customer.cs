@@ -25,5 +25,5 @@ public partial class Customer
 
     public int? LoyaltyPoints { get; set; }
 
-    public virtual Ticketbooking? Ticketbooking { get; set; }
+    public virtual ICollection<Ticketbooking> Ticketbookings { get; set; } = new List<Ticketbooking>();
 }
