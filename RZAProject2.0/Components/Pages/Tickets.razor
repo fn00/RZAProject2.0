@@ -1,6 +1,9 @@
 ﻿@using RZAProject2.Models
 @using RZAProject2.Services
+#@using RZAProject2.Utilities
 @inject AttractionService AttractionService
+@inject UserSession UserSession
+@inject NavigationManager NavigationManager
 
 @page "/tickets"
 <link rel="stylesheet" href="CSS/style.css" />
@@ -21,13 +24,43 @@ else
     <div>no attractions</div>
 }
 
+@if (tickets != null && tickets.Count != 0)
+{
+    @foreach (Ticket ticket in tickets)
+    {
+        <div>@ticket.TicketId, @ticket.AttractionId</div>
+    }
+}
+else
+{
+    <div>Your tickets will show here...</div>
+}
 
 @code {
     List<Attraction> attractions;
     List<Ticket> tickets;
+    DateOnly ticketDate;
+    Ticketbooking newTicketbooking;
     protected override async Task OnInitializedAsync()
     {
-        attractions = await AttractionService.GetAttractionsAsync();
-        tickets = new List<Ticket>();
+        if (UserSession.UserId == null || UserSession.UserId == 0)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            attractions = await AttractionService.GetAttractionsAsync();
+            tickets = new List<Ticket>();
+            newTicketbooking = new Ticketbooking();
+        }
+    }
+    private void AddTicket(int attractionId)
+    {
+        //this one adds tickets to the basket
+    }
+    private async Task BookTickets()
+    {
+        //this one books all the tickets in the basket
+
     }
 }
