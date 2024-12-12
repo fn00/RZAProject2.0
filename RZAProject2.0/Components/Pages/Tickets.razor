@@ -10,20 +10,29 @@
 @rendermode InteractiveServer
 
 @page "/bookTickets"
-
-<h3>Tickets</h3>
+<link rel="stylesheet" href="CSS/style.css" />
 
 @if (attractions != null)
 {
-    @foreach (Attraction attraction in attractions)
-    {
-        <div>
-            @attraction.AttractionName: £@attraction.Price
-            <button @onclick="@(e => AddTicket(attraction.AttractionId))">add to basket</button>
+    <div class="register-container">
+        <div class="register-card">
+            <div class="register">
+                <h3 style="text-align: center"> Book Tickets</h3><br>
+                @foreach (Attraction attraction in attractions)
+                {
+
+                    <div>
+                        @attraction.AttractionName: £@attraction.Price
+                        <button @onclick="@(e => AddTicket(attraction.AttractionId))">+</button><br>
+                    </div>
+                    
+
+                }
+                <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd") @bind=@ticketDate>
+                <button @onclick=@BookTickets>Book Tickets</button>
+            </div>
         </div>
-    }
-    <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd") @bind=@ticketDate>
-    <button @onclick=@BookTickets>Book Tickets</button>
+    </div>
 }
 else
 {
