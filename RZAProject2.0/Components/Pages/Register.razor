@@ -21,21 +21,21 @@
                 <ValidationSummary />
                 <h3 style="text-align: center"> Register</h3><br>
                 <label> Username </label>
-                <input type="text" id="username" name="username" @bind-value=newCustomer.Username><br>
+                <input type="text" id="username" name="username" @bind-value=newCustomer.Username required><br>
 
 
                 <label> Password </label>
-                <input type="password" id="password" name="password" @bind-value=newCustomer.Password><br>
+                <input type="password" id="password" name="password" @bind-value=newCustomer.Password required><br>
 
                 <label> First Name </label>
-                <input type="text" id="firstName" name="firstName" @bind-value=newCustomer.FirstName><br>
+                <input type="text" id="firstName" name="firstName" @bind-value=newCustomer.FirstName required><br>
 
 
                 <label> Last Name </label>
-                <input type="text" id="lastName" name="lastName" @bind-value=newCustomer.LastName><br>
+                <input type="text" id="lastName" name="lastName" @bind-value=newCustomer.LastName required><br>
 
                 <label>Phone Number </label>
-                <input type="text" id="phoneNumber" name="phoneNumber" @bind-value=newCustomer.PhoneNumber>
+                <input type="tel" id="phoneNumber" name="phoneNumber" @bind-value=newCustomer.PhoneNumber required>
 
                 <div class="registerButton">
                     <button type="submit">Submit</button><br><br>
