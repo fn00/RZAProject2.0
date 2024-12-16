@@ -115,6 +115,27 @@ button {
     }
 
 
+
+
+
+
+/*Box for the image of children with snake of Educational Content page*/
+educational-content-kids {
+    position: absolute;
+    top: 75%;
+    left: 5%;
+    transform: translateY(-50px);
+}
+
+.educational-content-kids h2 {
+    background-color: rgba(51, 63, 80);
+    border-radius: 20px;
+    padding: 20px 20px 20px 20px;
+    margin: 20px 0px 0px;
+    font-size: 45px;
+    color: white
+}
+}
 /*.infobox-ctn {
     position: absolute;
     bottom: 150%;
