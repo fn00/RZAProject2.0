@@ -22,10 +22,10 @@
                 <ValidationSummary />
                 <h3 style="text-align: center"> Login</h3><br>
                 <label> Username</label>
-                <input type="text" id="username" name="username" @bind-value=newCustomer.Username required><br>
+                <InputText type="text" id="username" name="username" @bind-value=newCustomer.Username required /><br>
 
                 <label> Password</label>
-                <input type="password" id="password" name="password" @bind-value=@password required><br>
+                <InputText type="password" id="password" name="password" @bind-value=@password required /><br>
 
                 <div class="loginButton">
                     <button type="submit">Submit</button>
@@ -68,6 +68,7 @@
         {
             UserSession.UserId = newCustomer.CustomerId;
             NavigationManager.NavigateTo("/account");
+            newCustomer = new Customer();
         }
     }
 }
