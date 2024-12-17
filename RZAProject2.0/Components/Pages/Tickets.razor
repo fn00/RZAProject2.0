@@ -56,11 +56,17 @@ else
     List<Ticket> tickets;
     DateOnly ticketDate;
     Ticketbooking newTicketbooking;
+    private string message;
+
     protected override async Task OnInitializedAsync()
     {
         if (UserSession.UserId == 0)
         {
             NavigationManager.NavigateTo("/");
+            message = "Could not log in, refresh page and try again";
+            StateHasChanged();
+            await Task.Delay(2000);
+
         }
         else
         {

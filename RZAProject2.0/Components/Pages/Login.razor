@@ -27,6 +27,9 @@
                 <label> Password</label>
                 <InputText type="password" id="password" name="password" @bind-value=@password required /><br>
 
+
+                <div>@message</div>
+
                 <div class="loginButton">
                     <button type="submit">Submit</button>
                 </div>
@@ -45,13 +48,14 @@
 @code {
     private Customer newCustomer = new Customer();
     private string password;
+    private string message;
 
     #region Hidden
     protected override async Task OnInitializedAsync()
     {
         if (UserSession.UserId != 0)
         {
-            NavigationManager.NavigateTo("/");
+            NavigationManager.NavigateTo("/modify");
         }
     }
     #endregion
@@ -62,11 +66,18 @@
         newCustomer = await CustomerService.LogIn(newCustomer);
         if (newCustomer == null)
         {
-            Console.WriteLine("could not log in");
+
+            message = "Could not log in, refresh page and try again";
+            StateHasChanged();
+            await Task.Delay(2000);
+
         }
         else
         {
+            message = "Successfully logged in, returning to home page";
+            StateHasChanged();
             UserSession.UserId = newCustomer.CustomerId;
+            await Task.Delay(2000);
             NavigationManager.NavigateTo("/account");
             newCustomer = new Customer();
         }
